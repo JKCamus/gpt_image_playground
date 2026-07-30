@@ -1,9 +1,7 @@
-## v0.6.4（2026-06-11）
+## v0.7.2（2026-07-29）
 
 ### 新增
-- **新增配置名称 URL 查询参数**
-  - 支持通过 `?profileName=我的配置` 在导入 OpenAI 兼容配置时指定配置名称。
-  - 复制导入 URL 时会自动携带当前配置名称，便于分享后在目标环境中保持清晰的配置识别。
-- **补充流式传输 URL 参数支持说明**
-  - README 的 URL 传参说明中新增 `streamImages` 与 `streamPartialImages` 参数。
-  - 支持通过 `?streamImages=true&streamPartialImages=2` 快速开启流式传输并设置中间步骤图像数。
+- 新增 Responses API 推理强度设置：OpenAI API 配置可选择 `none`、`minimal`、`low`、`medium`、`high`、`xhigh` 或 `max`，适用于画廊生成及 Agent 原生、混合模式的 Responses 请求；支持通过 `reasoningEffort` URL 参数或 `VITE_DEFAULT_API_URL` 预设，配置导入链接也会保留该设置 (#125)。
+
+### 变更
+- 改进 Codex CLI 兼容模式的尺寸处理：不再向接口发送 `size` 参数，改由提示词传达明确分辨率；尺寸选择器仅开放 1K 档位，超出 1K 像素预算的自定义尺寸会自动规整。
